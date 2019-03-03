@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.13)
-project(adapter)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+project(common)
+
+include(conanbuildinfo.cmake)
 conan_basic_setup()
 set(CMAKE_SKIP_RPATH OFF)
 
-set(CMAKE_CXX_STANDARD 14)
+find_package(Boost REQUIRED)
+
+set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(adapter)
+add_subdirectory(beast)
+add_subdirectory(rabbitmq)
+add_subdirectory(thread_safe)
 
 enable_testing()
